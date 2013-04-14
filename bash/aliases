@@ -1,0 +1,90 @@
+############################################################
+## Alias Management
+############################################################
+alias reload="source ~/bin/dotfiles/bash/aliases"
+alias ea="sublime ~/bin/dotfiles/bash/aliases && reload"
+
+############################################################
+## Git
+############################################################
+alias g="git"
+alias s="git status"
+
+function gg() {
+  git commit -v -a -m "$*"
+}
+
+function gm {
+  git merge $1
+}
+
+function gpo {
+  git push origin $1
+}
+
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci)%Creset' --abbrev-commit --date=relative"
+alias glst="gl --stat"
+alias glsh="git shortlog -sn"
+
+function gco {
+  if [ -z "$1" ]; then
+    git checkout master
+  else
+    git checkout $*
+  fi
+}
+
+alias gcod="gco development"
+alias gcos="gco staging"
+alias gcop="gco production"
+
+############################################################
+## Rails
+############################################################
+alias rs="rails s"
+alias rc="rails c"
+alias ru="unicorn"
+alias rmig="rake db:migrate"
+
+############################################################
+## Text Editors
+############################################################
+alias subl="sublime ."
+
+############################################################
+## Task Management
+############################################################
+alias tu="top -o cpu"    #cpu
+alias tm="top -o vsize"  #memory
+
+############################################################
+## Navigation
+############################################################
+alias ..="cd .."
+
+alias cdhb="cd ~/code/hasty-backend"
+alias cdhi="cd ~/code/hasty-ios-app"
+
+# Go to directory after creating
+function take() { 
+  mkdir -p "$1"
+  cd "$1" 
+}
+
+############################################################
+## Bundler
+############################################################
+alias b="bundle"
+alias bu="b update"
+
+############################################################
+## Heroku
+############################################################
+
+function heroku_command {
+  if [ -z "$*" ]; then
+    echo "run console"
+  else
+    echo "$*"
+  fi
+}
