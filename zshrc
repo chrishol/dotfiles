@@ -9,6 +9,8 @@ unset file
 ## ZSH Config
 ############################################################
 
+plugins=(brew gem)
+
 # Show completion on first TAB
 setopt menucomplete
 
@@ -28,7 +30,7 @@ PROMPT='
 %~
 ${smiley}  %{$reset_color%}'
 
-RPROMPT='%{$fg[white]%} $(~/bin/git-cwd-info)%{$reset_color%}'
+RPROMPT='%{$fg[white]%} $(~/bin/dotfiles/functions/git-cwd-info)%{$reset_color%}'
 
 #$(~/.rvm/bin/rvm-prompt)
 
