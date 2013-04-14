@@ -26,8 +26,8 @@ setopt prompt_subst
 # Prompt
 local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
-PROMPT='
-%~
+PROMPT=$'
+%{\e[0;37m%}%n %{\e[0;33m%}%~ 
 ${smiley}  %{$reset_color%}'
 
 RPROMPT='%{$fg[white]%} $(~/bin/dotfiles/functions/git-cwd-info)%{$reset_color%}'
