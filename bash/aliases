@@ -9,6 +9,7 @@ alias ea="sublime ~/bin/dotfiles/bash/aliases && reload"
 ############################################################
 alias g="git"
 alias s="git status"
+alias ga="git add ."
 
 function gg() {
   git commit -v -a -m "$*"
@@ -92,3 +93,8 @@ function heroku_command {
     echo "$*"
   fi
 }
+
+############################################################
+## RVM
+############################################################
+[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
