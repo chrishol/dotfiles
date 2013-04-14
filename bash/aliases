@@ -43,7 +43,7 @@ alias gcop="gco production"
 ############################################################
 alias rs="rails s"
 alias rc="rails c"
-alias ru="unicorn"
+alias ru="unicorn -p 3000 -c ./config/unicorn.rb"
 alias rmig="rake db:migrate"
 
 ############################################################
