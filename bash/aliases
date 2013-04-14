@@ -43,6 +43,13 @@ alias gcod="gco development"
 alias gcos="gco staging"
 alias gcop="gco production"
 
+# Comedy productivity measure
+function gdays {
+  git diff --shortstat "@{$1 days ago}" 
+}
+
+
+
 ############################################################
 ## Rails
 ############################################################
