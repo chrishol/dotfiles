@@ -1,4 +1,6 @@
-source ~/bin/dotfiles/bash/env
-source ~/bin/dotfiles/bash/config
-source ~/bin/dotfiles/bash/aliases
-source ~/bin/dotfiles/bash/hasty
+# Load the shell dotfiles, and then some:
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/bin/dotfiles/bash/{env,config,aliases,extra}; do
+  [ -r "$file" ] && source "$file"
+done
+unset file
