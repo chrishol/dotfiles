@@ -10,6 +10,7 @@ alias ea="sublime ~/bin/dotfiles/bash/aliases && reload"
 alias g="git"
 alias s="git status"
 alias ga="git add ."
+alias gb="git branch"
 
 function gg() {
   git commit -v -a -m "$*"
@@ -48,6 +49,13 @@ function gdays {
   git diff --shortstat "@{$1 days ago}" 
 }
 
+function gph {
+  if [ -z "$1" ]; then
+    git push heroku master
+  else
+    git push heroku $*
+  fi
+}
 
 
 ############################################################
