@@ -81,6 +81,9 @@ alias tm="top -o vsize"  #memory
 ## Navigation
 ############################################################
 alias ..="cd .."
+alias ...="cd ../.."
+alias ,,="cd .."
+alias ,,,="cd ../.."
 
 alias cdhb="cd ~/code/hasty-backend"
 alias cdhi="cd ~/code/hasty-ios-app"
@@ -108,6 +111,11 @@ function heroku_command {
     echo "$*"
   fi
 }
+
+############################################################
+## XCode
+############################################################
+alias x='open *.xcworkspace'
 
 ############################################################
 ## RVM

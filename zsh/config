@@ -1,0 +1,13 @@
+plugins=(brew gem)
+
+# Show completion on first TAB
+setopt menucomplete
+
+# Load completions for Ruby, Git, etc.
+autoload compinit
+compinit
+
+# Colors
+autoload -U colors
+colors
+setopt prompt_subst
