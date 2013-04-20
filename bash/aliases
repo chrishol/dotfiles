@@ -3,6 +3,7 @@
 ############################################################
 alias reload="source ~/bin/dotfiles/bash/aliases"
 alias ea="sublime ~/bin/dotfiles/bash/aliases && reload"
+alias ee="sublime ~/bin/dotfiles/bash/extra && source ~/bin/dotfiles/bash/extra"
 
 ############################################################
 ## Git
@@ -111,6 +112,8 @@ function heroku_command {
     echo "$*"
   fi
 }
+
+alias hrc="heroku run console"
 
 ############################################################
 ## XCode
