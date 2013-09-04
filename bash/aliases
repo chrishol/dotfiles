@@ -1,9 +1,9 @@
 ############################################################
 ## Alias Management
 ############################################################
-alias reload="source ~/bin/dotfiles/bash/aliases"
+alias reload="source ~/bin/dotfiles/bash/aliases && source ~/bin/dotfiles/bash/extra"
 alias ea="sublime ~/bin/dotfiles/bash/aliases && reload"
-alias ee="sublime ~/bin/dotfiles/bash/extra && source ~/bin/dotfiles/bash/extra"
+alias ee="sublime ~/bin/dotfiles/bash/extra && reload"
 
 ############################################################
 ## Git
@@ -16,7 +16,7 @@ alias gd="git diff"
 alias gt="git tag"
 
 function gg() {
-  git commit -v -a -m "$*"
+  git commit -v -m "$*"
 }
 
 function gm {
@@ -65,8 +65,11 @@ function gph {
 ## Rails
 ############################################################
 alias rs="rails s"
+alias bers="bundle exec rails s"
 alias rc="rails c"
+alias berc="bundle exec rails c"
 alias ru="unicorn -p 3000 -c ./config/unicorn.rb"
+alias beru="bundle exec unicorn -p 3000 -c ./config/unicorn.rb"
 alias rmig="rake db:migrate"
 
 ############################################################
@@ -101,6 +104,7 @@ function take() {
 ## Bundler
 ############################################################
 alias b="bundle"
+alias be="b exec"
 alias bu="b update"
 
 ############################################################
@@ -121,6 +125,7 @@ alias hrc="heroku run console"
 ## XCode
 ############################################################
 alias x='open *.xcworkspace'
+alias bump='agvtool bump -all'
 
 ############################################################
 ## RVM
