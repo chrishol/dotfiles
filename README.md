@@ -9,7 +9,7 @@ To install
 
 1. Install ZSH
 2. Install Oh My ZSH
-3. Add `source ~/bin/dotfiles/zshrc` to .zshrc
+3. Add `source ~/path/to/dotfiles/zshrc` to your ~/.zshrc
 
 I use the rather beautiful solarized Terminal theme, available at:
 https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
