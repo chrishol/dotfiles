@@ -100,6 +100,9 @@ alias ,,,="cd ../.."
 alias cdzb="cd ~/code/zesty-backend"
 alias cdzi="cd ~/code/zesty-ios-app"
 alias cdzj="cd ~/code/zesty-jsapp"
+alias cdzc="cd ~/code/zesty-corporate"
+alias cdzd="cd ~/code/zesty-captain-app"
+alias cdzr="cd ~/code/zesty-restaurants"
 
 # Go to directory after creating
 function take() { 
