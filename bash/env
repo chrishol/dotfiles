@@ -7,3 +7,6 @@ PATH="/usr/local/heroku/bin:$PATH"
 ### Add local bin directories to PATH for scripting
 PATH="$PATH:~/bin" 
 PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
+
+### Add ADB for Android
+PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools"
