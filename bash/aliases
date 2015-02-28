@@ -1,9 +1,9 @@
 ############################################################
 ## Alias Management
 ############################################################
-alias reload="source ~/bin/dotfiles/bash/aliases && source ~/bin/dotfiles/bash/extra"
-alias ea="sublime ~/bin/dotfiles/bash/aliases && reload"
-alias ee="sublime ~/bin/dotfiles/bash/extra && reload"
+alias reload="source ~/src/dotfiles/bash/aliases && source ~/src/dotfiles/bash/extra"
+alias ea="sublime ~/src/dotfiles/bash/aliases && reload"
+alias ee="sublime ~/src/dotfiles/bash/extra && reload"
 
 ############################################################
 ## Git
@@ -55,7 +55,7 @@ alias gcop="gco production"
 
 # Comedy productivity measure
 function gdays {
-  git diff --shortstat "@{$1 days ago}" 
+  git diff --shortstat "@{$1 days ago}"
 }
 
 function gph {
@@ -107,9 +107,9 @@ alias cdzd="cd ~/code/zesty-captain-app"
 alias cdzr="cd ~/code/zesty-restaurants"
 
 # Go to directory after creating
-function take() { 
+function take() {
   mkdir -p "$1"
-  cd "$1" 
+  cd "$1"
 }
 
 ############################################################
