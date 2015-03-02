@@ -2,8 +2,9 @@
 ## Alias Management
 ############################################################
 alias reload="source ~/src/dotfiles/bash/aliases && source ~/src/dotfiles/bash/extra"
-alias ea="sublime ~/src/dotfiles/bash/aliases && reload"
-alias ee="sublime ~/src/dotfiles/bash/extra && reload"
+alias ea="atom ~/src/dotfiles/bash/aliases && reload"
+alias ee="atom ~/src/dotfiles/bash/extra && reload"
+alias dots="atom ~/src/dotfiles && reload"
 
 ############################################################
 ## Git
@@ -83,7 +84,7 @@ alias befs="bundle exec foreman start"
 ############################################################
 ## Text Editors
 ############################################################
-alias subl="sublime ."
+alias subl="atom ."
 
 ############################################################
 ## Task Management
@@ -99,7 +100,7 @@ alias ...="cd ../.."
 alias ,,="cd .."
 alias ,,,="cd ../.."
 
-alias cdzb="cd ~/code/zesty-backend"
+alias cdzb="cd ~/src/backend"
 alias cdzi="cd ~/code/zesty-ios-app"
 alias cdzj="cd ~/code/zesty-jsapp"
 alias cdzc="cd ~/code/zesty-corporate"
