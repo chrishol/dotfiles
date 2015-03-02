@@ -4,3 +4,9 @@ for file in ~/src/dotfiles/bash/{env,config,aliases,extra}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
+
+############################################################
+## Boxen
+############################################################
+
+source "/opt/boxen/env.sh"

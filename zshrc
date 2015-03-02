@@ -13,3 +13,9 @@ for file in ~/src/dotfiles/zsh/{config,prompt}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
+
+############################################################
+## Boxen
+############################################################
+
+source "/opt/boxen/env.sh"
