@@ -12,17 +12,20 @@ alias dots="atom ~/src/dotfiles && reload"
 alias g="git"
 alias s="git status"
 alias gaa="git add --all"
+alias gap='git add -p'
 alias gb="git branch"
 alias gd="git diff"
 alias gt="git tag"
 alias gundo="git reset --soft HEAD~1"
+alias gup="git pull --rebase --prune"
 alias gp='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin'
+alias gpp='gup && gp'
 
 function ga {
   git add $1
 }
 
-function gg() {
+function ggg() {
   git commit -v -m "$*"
 }
 
@@ -72,7 +75,7 @@ function gph {
 ## Rails
 ############################################################
 alias rs="rails s"
-alias bers="bundle exec foreman start"
+alias bers="bundle exec foreman start web"
 alias rc="rails c"
 alias berc="bundle exec rails c"
 alias ru="unicorn -p 3000 -c ./config/unicorn.rb"
@@ -80,6 +83,11 @@ alias beru="bundle exec unicorn -p 3000 -c ./config/unicorn.rb"
 alias rmig="rake db:migrate"
 alias fs="foreman start"
 alias befs="bundle exec foreman start"
+
+############################################################
+## Ember.js
+############################################################
+alias nibi="npm install && bower install"
 
 ############################################################
 ## Text Editors
