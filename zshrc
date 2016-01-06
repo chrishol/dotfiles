@@ -14,8 +14,7 @@ for file in ~/src/dotfiles/zsh/{config,prompt}; do
 done
 unset file
 
-############################################################
-## Boxen
-############################################################
-
-source "/opt/boxen/env.sh"
+## rbenv
+##########
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
