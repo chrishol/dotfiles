@@ -5,6 +5,9 @@ for file in ~/src/dotfiles/bash/{env,config,aliases,extra}; do
 done
 unset file
 
+## Square config
+source ~/Development/config_files/square/zshrc
+
 ############################################################
 ## ZSH Config
 ############################################################
@@ -13,8 +16,3 @@ for file in ~/src/dotfiles/zsh/{config,prompt}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
-
-## rbenv
-##########
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"

@@ -4,8 +4,3 @@ for file in ~/src/dotfiles/bash/{env,config,aliases,extra}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
-
-## rbenv
-##########
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
