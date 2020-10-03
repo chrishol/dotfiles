@@ -5,9 +5,6 @@ for file in ~/src/dotfiles/bash/{env,config,aliases,extra}; do
 done
 unset file
 
-## Square config
-source ~/Development/config_files/square/zshrc
-
 ############################################################
 ## ZSH Config
 ############################################################
