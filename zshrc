@@ -15,10 +15,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Common aliases
-for file in $HOME/src/dotfiles/common/{aliases}; do
-  [ -r "$file" ] && source "$file"
-done
-unset file
+source $HOME/src/dotfiles/common/aliases
 
 ############################################################
 ## ZSH Config
