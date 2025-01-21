@@ -9,16 +9,25 @@ alias gb="git branch"
 alias gd="git diff"
 alias gt="git tag"
 alias gundo="git reset --soft HEAD~1"
+
 alias gup="git pull --rebase --prune"
 
 function gp() {
-  default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+  local default_branch
+  default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed "s@^refs/remotes/origin/@@")
   if [[ -z "$default_branch" ]]; then
     echo "Error: Unable to determine the default branch."
     return 1
   fi
 
-  git branch --merged "$default_branch" | grep -v "\* $default_branch" | xargs -n 1 git branch -d
+  local branches
+  branches=$(git branch --merged "$default_branch" | grep -v "\* $default_branch")
+  if [[ -z "$branches" ]]; then
+    echo "No branches to delete."
+  else
+    echo "$branches" | xargs -n 1 git branch -d
+  fi
+
   git remote prune origin
 }
 
