@@ -23,6 +23,216 @@ alias cdmp="cd $PLEX_DIR"
 alias cdmr="cd $RIPS_DIR"
 
 ############################################################
+## tmux
+############################################################
+
+# Function to start a new tmux session
+function start_tmux_session() {
+  if [ -z "$1" ]; then
+    echo "Usage: start_tmux_session <session_name>"
+    return 1
+  fi
+  tmux new-session -s "$1"
+}
+
+# Function to list all tmux sessions
+function list_tmux_sessions() {
+  tmux ls
+}
+
+# Function to attach to an existing tmux session
+function attach_tmux_session() {
+  if [ -z "$1" ]; then
+    echo "Usage: attach_tmux_session <session_name>"
+    return 1
+  fi
+  tmux attach-session -t "$1"
+}
+
+# Function to detach from the current tmux session
+function detach_tmux_session() {
+  tmux detach
+}
+
+# Function to kill a tmux session
+function kill_tmux_session() {
+  if [ -z "$1" ]; then
+    echo "Usage: kill_tmux_session <session_name>"
+    return 1
+  fi
+  tmux kill-session -t "$1"
+}
+
+# Function to create a new window in the current tmux session
+function new_tmux_window() {
+  tmux new-window
+}
+
+# Function to rename the current tmux window
+function rename_tmux_window() {
+  if [ -z "$1" ]; then
+    echo "Usage: rename_tmux_window <new_window_name>"
+    return 1
+  fi
+  tmux rename-window "$1"
+}
+
+# Aliases for quick access
+alias tmn="start_tmux_session"
+alias tms="start_tmux_session"
+alias tml="list_tmux_sessions"
+alias tma="attach_tmux_session"
+alias tmd="detach_tmux_session"
+alias tmk="kill_tmux_session"
+alias tmnw="new_tmux_window"
+alias tmr="rename_tmux_window"
+
+############################################################
+## systemctl
+############################################################
+
+# Function to start a service
+function start_service() {
+  if [ -z "$1" ]; then
+    echo "Usage: start_service <service_name>"
+    return 1
+  fi
+  sudo systemctl start "$1"
+  echo "Service '$1' started."
+}
+
+# Function to stop a service
+function stop_service() {
+  if [ -z "$1" ]; then
+    echo "Usage: stop_service <service_name>"
+    return 1
+  fi
+  sudo systemctl stop "$1"
+  echo "Service '$1' stopped."
+}
+
+# Function to restart a service
+function restart_service() {
+  if [ -z "$1" ]; then
+    echo "Usage: restart_service <service_name>"
+    return 1
+  fi
+  sudo systemctl restart "$1"
+  echo "Service '$1' restarted."
+}
+
+# Function to check the status of a service
+function status_service() {
+  if [ -z "$1" ]; then
+    echo "Usage: status_service <service_name>"
+    return 1
+  fi
+  sudo systemctl status "$1"
+}
+
+# Function to view logs of a service
+function logs_service() {
+  if [ -z "$1" ]; then
+    echo "Usage: logs_service <service_name> [optional_tail_lines]"
+    return 1
+  fi
+  local lines="${2:-50}" # Default to 50 lines if not provided
+  sudo journalctl -u "$1" -n "$lines" --no-pager
+}
+
+# Function to follow logs of a service
+function tail_logs_service() {
+  if [ -z "$1" ]; then
+    echo "Usage: tail_logs_service <service_name>"
+    return 1
+  fi
+  sudo journalctl -u "$1" -f
+}
+
+# Aliases for quick access
+alias start="start_service"
+alias stop="stop_service"
+alias restart="restart_service"
+alias status="status_service"
+alias logs="logs_service"
+alias tail_logs="tail_logs_service"
+
+############################################################
+## VPN
+############################################################
+
+function stfixvpn() {
+  get_and_connect_vpn "$FIXED_IP_SERVICE_NAME"
+}
+alias stpfixvpn="stop openvpn@$FIXED_IP_SERVICE_NAME"
+alias rsfixvpn="restart openvpn@$FIXED_IP_SERVICE_NAME"
+
+function stukvpn() {
+  get_and_connect_vpn "$UK_VPN_SERVICE_NAME"
+}
+alias stpukvpn="stop openvpn@$UK_VPN_SERVICE_NAME"
+alias rsukvpn="restart openvpn@$UK_VPN_SERVICE_NAME"
+
+function stusvpn() {
+  get_and_connect_vpn "$US_VPN_SERVICE_NAME"
+}
+alias stpusvpn="stop openvpn@$US_VPN_SERVICE_NAME"
+alias rsusvpn="restart openvpn@$US_VPN_SERVICE_NAME"
+
+# Function to connect to the VPN and show IP change
+function get_and_connect_vpn() {
+  if [ -z "$1" ]; then
+    echo "Usage: get_and_connect_vpn <vpn_service_name>"
+    return 1
+  fi
+
+  # Get current IP address
+  current_ip=$(myip)
+  echo "Current IP: $current_ip"
+
+  # Connect to the specified VPN service
+  echo "Connecting to VPN '$1'..."
+  start openvpn@$1
+
+  # Wait for the VPN connection to establish
+  sleep 1
+  echo "..."
+  sleep 1
+  echo "..."
+  sleep 1
+
+  # Get the new IP address after connecting to the VPN
+  new_ip=$(myip)
+  echo "New IP (after VPN): $new_ip"
+}
+
+# Function to list active TorGuard services and display current IP
+# Function to list active TorGuard services and display current IP with colored output
+function list_active_vpn_services() {
+  # ANSI escape codes for colors
+  RED='\033[0;31m'
+  GREEN='\033[0;32m'
+  NC='\033[0m'  # No color (reset)
+
+  # List all openvpn@tg services and check if they're active
+  active_vpn_services=$(systemctl list-units --type=service --state=active | grep 'openvpn@tg' | awk '{print $1}')
+
+  # Check if any TorGuard services are active
+  if [ -z "$active_vpn_services" ]; then
+    echo -e "${RED}No active TorGuard VPN services found.${NC}"
+  else
+    echo -e "${GREEN}Active TorGuard VPN services:${NC}"
+    echo -e "${GREEN}$active_vpn_services${NC}"
+  fi
+
+  # Display current public IP
+  current_ip=$(myip)
+  echo "Current IP: $current_ip"
+}
+
+alias vpns="list_active_vpn_services"
+
+############################################################
 ## Maintenance
 ############################################################
 

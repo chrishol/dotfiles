@@ -33,7 +33,7 @@ function gp() {
 
 alias gpp='gup && gp'
 
-function ga {
+function ga() {
   git add $1
 }
 
@@ -41,11 +41,11 @@ function ggg() {
   git commit -v -m "$*"
 }
 
-function gm {
+function gm() {
   git merge $1
 }
 
-function gpo {
+function gpo() {
   if [ -z "$1" ]; then
     git push origin master
   else
@@ -66,11 +66,11 @@ function gco {
 }
 
 # Comedy productivity measure
-function gdays {
+function gdays() {
   git diff --shortstat "@{$1 days ago}"
 }
 
-function gph {
+function gph() {
   if [ -z "$1" ]; then
     git push heroku master
   else
@@ -91,6 +91,43 @@ alias ,,,="cd ../.."
 function take() {
   mkdir -p "$1"
   cd "$1"
+}
+
+############################################################
+## Public IP Address
+############################################################
+function myip() {
+  local service="https://ifconfig.me"
+  local ip
+
+  if command -v curl &>/dev/null; then
+    ip=$(curl -s "$service")
+  elif command -v wget &>/dev/null; then
+    ip=$(wget -qO- "$service")
+  else
+    echo "Error: Neither curl nor wget is available. Please install one to use this function."
+    return 1
+  fi
+
+  # Output the IP in green and ensure a newline
+  printf "\033[32m%s\033[0m\n" "$ip"
+}
+
+############################################################
+## VPN
+############################################################
+
+alias mva="mullvad account get"
+alias mvc="mullvad connect"
+alias mvd="mullvad disconnect"
+alias mvs="mullvad status"
+
+function mvrs() {
+  if [ -z "$1" ]; then
+    echo "Usage: mvrs <mullvad-relay-string e.g. gb-glw-wg-001>"
+    return 1
+  fi
+  mullvad relay set location "$1"
 }
 
 ############################################################
