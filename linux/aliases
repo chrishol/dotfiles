@@ -3,7 +3,9 @@
 ############################################################
 alias mmi="makemkvcon info -r disc:0"
 alias mmra="makemkvcon mkv disc:0 all $RIPS_DIR"
-alias mmr0="makemkvcon mkv disc:0 0 $RIPS_DIR"
+for i in {0..99}; do
+  alias mmr$i="makemkvcon mkv disc:0 $i \$RIPS_DIR"
+done
 
 alias ripdur="$HOME/src/list_mkv_durations.sh $RIPS_DIR"
 alias convsubs="$HOME/src/convert_ttml_to_srt.sh $DOWNLOADS_DIR"
