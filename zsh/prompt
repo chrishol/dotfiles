@@ -12,16 +12,23 @@ function get_local_ip() {
   fi
 }
 
-# Function to get the current operating system and hostname
+# Function to get the current operating system and hostname with color
 function os_and_host() {
-  echo "$(hostname) ($(uname -s))"
+  local hostname=$(hostname)
+  local os=$(uname -s)
+
+  if [[ "$os" == "Linux" ]]; then
+    echo "%{$fg[magenta]%}${hostname} (${os})%{$reset_color%}" # Magenta for Linux
+  else
+    echo "%{$fg[cyan]%}${hostname} (${os})%{$reset_color%}" # Cyan for others (e.g., macOS)
+  fi
 }
 
 # Prompt definition
 local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
 PROMPT=$'
-%{\e[0;37m%}%n %{\e[0;36m%}$(os_and_host), $(get_local_ip) %{\e[0;33m%}%~
+%{\e[0;37m%}%n %{\e[0;36m%}$(os_and_host) $(get_local_ip) %{\e[0;33m%}%~
 ${smiley}  %{$reset_color%}'
 
 RPROMPT='%{$fg[white]%} $(~/src/dotfiles/functions/git-cwd-info)%{$reset_color%}'
