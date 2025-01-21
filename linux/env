@@ -1,1 +1,3 @@
 export DOWNLOADS_DIR="/mnt/das1/downloads"
+export PLEX_DIR="/mnt/das1/plexmedia"
+export RIPS_DIR="/mnt/das1/rips"

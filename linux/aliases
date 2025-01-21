@@ -2,5 +2,13 @@
 ## MakeMKV
 ############################################################
 alias mmi="makemkvcon info -r disc:0"
-alias mmra="makemkvcon mkv disc:0 all /mnt/das1/rips"
-alias mmr0="makemkvcon mkv disc:0 0 /mnt/das1/rips"
+alias mmra="makemkvcon mkv disc:0 all $RIPS_DIR"
+alias mmr0="makemkvcon mkv disc:0 0 $RIPS_DIR"
+
+############################################################
+## Navigation
+############################################################
+alias cdm="cd /mnt/das1/"
+alias cdmd="cd $DOWNLOADS_DIR"
+alias cdmp="cd $PLEX_DIR"
+alias cdmr="cd $RIPS_DIR"
