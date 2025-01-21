@@ -1,13 +1,9 @@
 # Load the shell dotfiles, and then some:
 # * `extra` can be used for other settings you don’t want to commit.
-for file in $HOME/src/dotfiles/common/{aliases}; do
-  [ -r "$file" ] && source "$file"
-done
-unset file
 
 # OS-specific configurations
 if [[ "$OSTYPE" == "linux"* ]]; then
-  for file in $HOME/src/dotfiles/linux/{aliases,env}; do
+  for file in $HOME/src/dotfiles/linux/{env,aliases}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
@@ -17,6 +13,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   done
   unset file
 fi
+
+# Common aliases
+for file in $HOME/src/dotfiles/common/{aliases}; do
+  [ -r "$file" ] && source "$file"
+done
+unset file
 
 ############################################################
 ## ZSH Config

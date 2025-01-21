@@ -65,10 +65,6 @@ function gco {
   fi
 }
 
-alias gcod="gco development"
-alias gcos="gco staging"
-alias gcop="gco production"
-
 # Comedy productivity measure
 function gdays {
   git diff --shortstat "@{$1 days ago}"
@@ -90,10 +86,6 @@ alias ...="cd ../.."
 alias ,,="cd .."
 alias ,,,="cd ../.."
 
-alias cdm="cd /mnt/das1/"
-alias cdmd="cd /mnt/das1/downloads"
-alias cdmp="cd /mnt/das1/plexmedia"
-alias cdmr="cd /mnt/das1/rips"
 
 # Go to directory after creating
 function take() {
