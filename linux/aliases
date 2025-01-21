@@ -12,3 +12,18 @@ alias cdm="cd /mnt/das1/"
 alias cdmd="cd $DOWNLOADS_DIR"
 alias cdmp="cd $PLEX_DIR"
 alias cdmr="cd $RIPS_DIR"
+
+############################################################
+## Maintenance
+############################################################
+
+alias update='sudo apt update' # Update package list
+alias upgrade='sudo apt upgrade' # Upgrade installed packages
+alias autoremove='sudo apt autoremove' # Remove packages no longer needed
+alias autoclean='sudo apt autoclean' # Clean up downloaded .deb files
+alias clean='sudo apt clean && sudo apt autoremove' # Clean up and remove unnecessary packages and .deb files
+alias check-updates='apt list --upgradable' # Check for package updates
+alias apt-status='dpkg --get-selections' # Show the status of packages (whether they are installed, upgraded, etc.)
+alias mem='free -h' # Show system memory usage
+alias reboot='sudo reboot' # Reboot the system
+alias shutdown='sudo shutdown now' # Shutdown the system
