@@ -1,4 +1,79 @@
 ############################################################
+## Git
+############################################################
+alias g="git"
+alias s="git status"
+alias gaa="git add --all"
+alias gap='git add -p'
+alias gb="git branch"
+alias gd="git diff"
+alias gt="git tag"
+alias gundo="git reset --soft HEAD~1"
+alias gup="git pull --rebase --prune"
+
+function gp() {
+  default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+  if [[ -z "$default_branch" ]]; then
+    echo "Error: Unable to determine the default branch."
+    return 1
+  fi
+
+  git branch --merged "$default_branch" | grep -v "\* $default_branch" | xargs -n 1 git branch -d
+  git remote prune origin
+}
+
+alias gpp='gup && gp'
+
+function ga {
+  git add $1
+}
+
+function ggg() {
+  git commit -v -m "$*"
+}
+
+function gm {
+  git merge $1
+}
+
+function gpo {
+  if [ -z "$1" ]; then
+    git push origin master
+  else
+    git push origin $*
+  fi
+}
+
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci)%Creset' --abbrev-commit --date=relative"
+alias glst="gl --stat"
+alias glsh="git shortlog -sn"
+
+function gco {
+  if [ -z "$1" ]; then
+    git checkout master
+  else
+    git checkout $*
+  fi
+}
+
+alias gcod="gco development"
+alias gcos="gco staging"
+alias gcop="gco production"
+
+# Comedy productivity measure
+function gdays {
+  git diff --shortstat "@{$1 days ago}"
+}
+
+function gph {
+  if [ -z "$1" ]; then
+    git push heroku master
+  else
+    git push heroku $*
+  fi
+}
+
+############################################################
 ## yt-dlp
 ############################################################
 function yt-subs() {
