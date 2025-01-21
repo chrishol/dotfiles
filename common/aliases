@@ -1,0 +1,19 @@
+############################################################
+## yt-dlp
+############################################################
+function yt-subs() {
+  yt-dlp \
+    --write-subs \
+    --skip-download \
+    -o "$DOWNLOADS_DIR" \
+    "$@"
+}
+
+function yt-down() {
+  yt-dlp \
+    --write-subs \
+    --sub-lang en \
+    --sub-format ttml \
+    -o "$DOWNLOADS_DIR" \
+    "$@"
+}
