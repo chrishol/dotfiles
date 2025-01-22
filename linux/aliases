@@ -246,3 +246,36 @@ alias apt-status='dpkg --get-selections' # Show the status of packages (whether 
 alias mem='free -h' # Show system memory usage
 alias reboot='sudo reboot' # Reboot the system
 alias shutdown='sudo shutdown now' # Shutdown the system
+
+
+############################################################
+## Renaming
+############################################################
+
+function mkv_edit_track_name() {
+  if [[ $# -ne 3 ]]; then
+    echo "Usage: mkv_edit_track_name <file> <number> <text>"
+    return 1
+  fi
+
+  local file=$1
+  local number=$2
+  local text=$3
+
+  mkvpropedit "$file" --edit track:$number --set name="$text"
+}
+
+alias mkvtr='mkv_edit_track_name'
+
+function rnm() {
+  if [[ $# -ne 3 ]]; then
+    echo "Usage: rnm <from> <to> <file(s)>"
+    return 1
+  fi
+
+  local rnmfrom=$1
+  local rnmto=$2
+  local files=$3
+
+  rename "s/$rnmfrom/$rnmto/" $files
+}
