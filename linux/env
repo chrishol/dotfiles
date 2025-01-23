@@ -1,3 +1,9 @@
+# Add RVM for Ruby
+source "/etc/profile.d/rvm.sh"
+
+# Add pipx
+export PATH="$PATH:/home/chrishol/.local/bin"
+
 export DOWNLOADS_DIR="/mnt/das1/downloads"
 export PLEX_DIR="/mnt/das1/plexmedia"
 export RIPS_DIR="/mnt/das1/rips"
