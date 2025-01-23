@@ -43,10 +43,10 @@ function list_tmux_sessions() {
 # Function to attach to an existing tmux session
 function attach_tmux_session() {
   if [ -z "$1" ]; then
-    echo "Usage: attach_tmux_session <session_name>"
-    return 1
+    tmux attach
+  else
+    tmux attach-session -t "$1"
   fi
-  tmux attach-session -t "$1"
 }
 
 # Function to detach from the current tmux session
