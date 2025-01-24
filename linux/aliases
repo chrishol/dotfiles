@@ -7,8 +7,8 @@ for i in {0..99}; do
   alias mmr$i="makemkvcon mkv disc:0 $i \$RIPS_DIR"
 done
 
-alias ripdur="$HOME/src/list_mkv_durations.sh $RIPS_DIR"
-alias convsubs="$HOME/src/convert_ttml_to_srt.sh $DOWNLOADS_DIR"
+alias ripdur="$HOME/src/home-server-scripts/disc_ripping/list_mkv_durations.sh $RIPS_DIR"
+alias convsubs="$HOME/src/home-server-scripts/plex/convert_ttml_to_srt.sh $DOWNLOADS_DIR"
 
 function vlcstream() {
   cvlc $@ --sout '#http{mux=ts,dst=:8081}' --sout-keep
