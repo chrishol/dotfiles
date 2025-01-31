@@ -1,3 +1,6 @@
+# Create the `?` alias to call alias_list
+alias '?'='alias_list'
+
 ############################################################
 ## Git
 ############################################################
@@ -148,4 +151,20 @@ function yt-down() {
     --sub-format ttml \
     -o "$DOWNLOADS_DIR/%(title)s.%(ext)s" \
     "$@"
+}
+
+function yt-form() {
+  if [ -z "$1" ]; then
+    echo "Usage: yt-formats <url>"
+    return 1
+  fi
+  yt-dlp -F "$1"
+}
+
+function yt-fdown() {
+  if [ -z "$2" ]; then
+    echo "Usage: yt-fdown <url> <format>"
+    return 1
+  fi
+  yt-dlp -f "$2" -o "$DOWNLOADS_DIR/%(title)s.%(ext)s" "$1"
 }

@@ -1,3 +1,60 @@
+# Function to display frequently used aliases in a formatted, colored table
+alias_list() {
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]GENERAL ALIASES:$reset_color"
+
+  # Three-column format: "Alias  Description  |  Alias  Description  |  Alias  Description"
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "take" "mkdir and go there" "myip" "print my ip" "" "" \
+    "tu" "cpu usage" "tm" "memory usage" "" "" \
+
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]YT-DLP:$reset_color"
+
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "yt-down" "download video from url" "yt-subs" "download subs from url" "" "" \
+    "yt-form" "available formats" "yt-fdown" "download with format"
+
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]MAKE MKV:$reset_color"
+
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "mmi" "disc:0 info" "mmra" "disc:0 rip all" "mmr0" "disc:0 rip 0 (through 99)" \
+    "ripdur" "list rip durations" "convsubs" "convert ttml subtitles" "vlcstrm" "network stream on 8081" \
+    "mkvt" "mkv_edit_track_name" "" "" "" ""
+
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]TMUX:$reset_color"
+
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "tmn" "start_tmux_session" "tml" "list_tmux_sessions" "tma" "attach_tmux_session" \
+    "tmd" "detach_tmux_session" "tmk" "kill_tmux_session" "tmr" "rename_tmux_window"
+
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]TORGUARD VPNS:$reset_color"
+
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "stfixvpn" "start uk fixed ip" "stukvpn" "start uk vpn" "stukvpn" "start us vpn" \
+    "stpfixvpn" "stop uk fixed ip" "stpukvpn" "stop uk vpn" "stpukvpn" "stop us vpn" \
+    "rsfixvpn" "restart uk fixed ip" "rsukvpn" "restart uk vpn" "rsusvpn" "restart us vpn" \
+    "vpns" "list_active_vpn_services" "" "" "" ""
+
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]SERVICES:$reset_color"
+
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "start" "start_service" "stop" "stop_service" "restart" "restart_service" \
+    "status" "status_service" "logs" "logs_service" "taillogs" "tail_logs_service"
+
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]MULLVAD VPN:$reset_color"
+
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "mva" "mullvad account get" "mvc" "mullvad connect" "mvd" "mullvad disconnect" \
+    "mvs" "mullvad status" "mvrs" "mullvad set location"
+  echo "-------------------------------------------------------------------------------------------------------"
+}
+
 ############################################################
 ## MakeMKV
 ############################################################
@@ -10,7 +67,7 @@ done
 alias ripdur="$HOME/src/home-server-scripts/disc_ripping/list_mkv_durations.sh $RIPS_DIR"
 alias convsubs="$HOME/src/home-server-scripts/plex/convert_ttml_to_srt.sh $DOWNLOADS_DIR"
 
-function vlcstream() {
+function vlcstrm() {
   cvlc $@ --sout '#http{mux=ts,dst=:8081}' --sout-keep
 }
 

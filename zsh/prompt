@@ -14,7 +14,7 @@ function get_local_ip() {
 
 # Function to get the current operating system and hostname with color
 function os_and_host() {
-  local hostname=$(hostname)
+  local hostname=$(hostname -s)
   local os=$(uname -s)
 
   if [[ "$os" == "Linux" ]]; then
