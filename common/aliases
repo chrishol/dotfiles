@@ -1,6 +1,9 @@
 # Create the `?` alias to call alias_list
 alias '?'='alias_list'
 
+alias 'lslh'='ls -lh'
+alias 'dflh'='df -lh'
+
 ############################################################
 ## Git
 ############################################################
