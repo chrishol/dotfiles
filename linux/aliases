@@ -20,7 +20,7 @@ alias_list() {
 
   printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
     "mmi" "disc:0 info" "mmra" "disc:0 rip all" "mkvtr" "mkv_edit_track_name" \
-    "mmr00" "disc:0 rip 0 (through 99)" "mmr00" "disc:0 rip 0 (through 99)" "" "" \
+    "mmr00" "disc:0 rip 0 (to 99)" "mmr00" "disc:0 rip 0 (to 99)" "" "" \
     "ripdur" "list rip durations" "convsubs" "convert ttml subtitles" "vlcstrm" "network stream on 8081"
 
   echo "-------------------------------------------------------------------------------------------------------"
