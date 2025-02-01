@@ -24,6 +24,13 @@ alias_list() {
     "ripdur" "list rip durations" "convsubs" "convert ttml subtitles" "vlcstrm" "network stream on 8081"
 
   echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]PLEX:$reset_color"
+
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+    "addmv" "add plex movie dir" "addtv" "add plex tv dir" "" "" \
+    "iprnm" "iPlayer rename" "plexmv" "move renamed files" "" ""
+
+  echo "-------------------------------------------------------------------------------------------------------"
   echo "$fg[magenta]TMUX:$reset_color"
 
   printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
@@ -347,3 +354,16 @@ function rnm() {
 
   rename "s/$rnmfrom/$rnmto/" $files
 }
+
+alias iprnm="ruby $HOME/src/home-server-scripts/plex/plex_rename.rb $DOWNLOADS_DIR && ruby $HOME/src/home-server-scripts/plex/rename_iplayer_files_for_plex.rb $DOWNLOADS_DIR"
+
+############################################################
+## Plex
+############################################################
+
+alias addmv="ruby $HOME/src/home-server-scripts/plex/create_new_movie_directory.rb"
+alias addtv="ruby $HOME/src/home-server-scripts/plex/create_new_tv_show_directory.rb"
+
+alias plexmv="ruby $HOME/src/home-server-scripts/plex/move_renamed_tv_files_to_plex.rb"
+
+# TODO iplayer: fetch_all_episodes.rb  fetch_last_episode.rb  get_latest_episode.rb
