@@ -72,7 +72,7 @@ for i in {0..99}; do
 done
 
 for i in {0..99}; do
-  alias mmr1$i="makemkvcon mkv disc:0 $i \$RIPS_DIR"
+  alias mmr1$i="makemkvcon mkv disc:1 $i \$RIPS_DIR"
 done
 
 alias ripdur="$HOME/src/home-server-scripts/disc_ripping/list_mkv_durations.sh $RIPS_DIR"
