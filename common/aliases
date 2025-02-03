@@ -53,7 +53,13 @@ function gm() {
 
 function gpo() {
   if [ -z "$1" ]; then
-    git push origin master
+    local default_branch
+    default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed "s@^refs/remotes/origin/@@")
+    if [[ -z "$default_branch" ]]; then
+      git push origin master
+    else
+      git push origin $default_branch
+    fi
   else
     git push origin $*
   fi
