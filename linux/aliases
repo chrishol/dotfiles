@@ -355,7 +355,7 @@ function rnm() {
   rename "s/$rnmfrom/$rnmto/" $files
 }
 
-alias iprnm="ruby $HOME/src/home-server-scripts/plex/plex_rename.rb $DOWNLOADS_DIR && ruby $HOME/src/home-server-scripts/plex/rename_iplayer_files_for_plex.rb $DOWNLOADS_DIR"
+alias iprnm="ruby $HOME/src/home-server-scripts/plex/rename_iplayer_files_for_plex.rb $DOWNLOADS_DIR && ruby $HOME/src/home-server-scripts/plex/plex_rename.rb $DOWNLOADS_DIR"
 
 ############################################################
 ## Plex
