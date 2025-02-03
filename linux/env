@@ -2,7 +2,7 @@
 source "/etc/profile.d/rvm.sh"
 
 # Add pipx
-export PATH="$PATH:/home/chrishol/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export DOWNLOADS_DIR="/mnt/das1/downloads"
 export PLEX_DIR="/mnt/das1/plexmedia"

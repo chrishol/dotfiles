@@ -1,2 +1,5 @@
 PATH=$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/local/share/npm/bin # Add Bower
+
+# Add pipx
+PATH=$PATH:$HOME/.local/bin
