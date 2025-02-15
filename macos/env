@@ -11,4 +11,5 @@ PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 ### Add ADB for Android
 PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools"
 
-export DOWNLOADS_DIR="~/Downloads"
+export DOWNLOADS_DIR="$HOME/Downloads"
+export LOGS_DIR="$HOME/logs"

@@ -7,6 +7,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export DOWNLOADS_DIR="/mnt/das1/downloads"
 export PLEX_DIR="/mnt/das1/plexmedia"
 export RIPS_DIR="/mnt/das1/rips"
+export LOGS_DIR="/var/log/myscripts"
 
 export FIXED_IP_SERVICE_NAME="tg-uk-fixedip"
 export UK_VPN_SERVICE_NAME="tg-uk-london"
