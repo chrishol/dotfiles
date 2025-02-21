@@ -4,6 +4,11 @@ alias '?'='alias_list'
 alias 'lslh'='ls -lh'
 alias 'dflh'='df -lh'
 
+############################################################
+## Basics
+############################################################
+alias reload="source $HOME/src/dotfiles/zshrc"
+
 alias 'home'='cd $HOME'
 alias 'dots'='cd $HOME/src/dotfiles'
 alias 'hss'='cd $HOME/src/home-server-scripts'

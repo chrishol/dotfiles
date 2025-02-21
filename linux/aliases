@@ -264,10 +264,16 @@ alias stpuk2vpn="stop openvpn@$UK_MANCHESTER_VPN_SERVICE_NAME"
 alias rsuk2vpn="restart openvpn@$UK_MANCHESTER_VPN_SERVICE_NAME"
 
 function stusvpn() {
-  get_and_connect_vpn "$US_VPN_SERVICE_NAME"
+  get_and_connect_vpn "$US_LA_VPN_SERVICE_NAME"
 }
-alias stpusvpn="stop openvpn@$US_VPN_SERVICE_NAME"
-alias rsusvpn="restart openvpn@$US_VPN_SERVICE_NAME"
+alias stpusvpn="stop openvpn@$US_LA_VPN_SERVICE_NAME"
+alias rsusvpn="restart openvpn@$US_LA_VPN_SERVICE_NAME"
+
+function stus2vpn() {
+  get_and_connect_vpn "$US_SF_VPN_SERVICE_NAME"
+}
+alias stpus2vpn="stop openvpn@$US_SF_VPN_SERVICE_NAME"
+alias rsus2vpn="restart openvpn@$US_SF_VPN_SERVICE_NAME"
 
 # Function to connect to the VPN and show IP change
 function get_and_connect_vpn() {

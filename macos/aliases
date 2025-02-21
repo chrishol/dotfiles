@@ -25,14 +25,6 @@ alias_list() {
 }
 
 ############################################################
-## Alias Management
-############################################################
-alias reload="source ~/src/dotfiles/bash/aliases && source ~/src/dotfiles/bash/extra"
-alias ea="atom ~/src/dotfiles/bash/aliases && reload"
-alias ee="atom ~/src/dotfiles/bash/extra && reload"
-alias dots="atom ~/src/dotfiles && reload"
-
-############################################################
 ## Rails
 ############################################################
 alias rs="rails s"
