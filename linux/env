@@ -10,5 +10,6 @@ export RIPS_DIR="/mnt/das1/rips"
 export LOGS_DIR="/var/log/myscripts"
 
 export FIXED_IP_SERVICE_NAME="tg-uk-fixedip"
-export UK_VPN_SERVICE_NAME="tg-uk-london"
+export UK_LONDON_VPN_SERVICE_NAME="tg-uk-london"
+export UK_MANCHESTER_VPN_SERVICE_NAME="tg-uk-manchester"
 export US_VPN_SERVICE_NAME="tg-us-losangeles"

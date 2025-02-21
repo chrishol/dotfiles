@@ -252,10 +252,16 @@ alias stpfixvpn="stop openvpn@$FIXED_IP_SERVICE_NAME"
 alias rsfixvpn="restart openvpn@$FIXED_IP_SERVICE_NAME"
 
 function stukvpn() {
-  get_and_connect_vpn "$UK_VPN_SERVICE_NAME"
+  get_and_connect_vpn "$UK_LONDON_VPN_SERVICE_NAME"
 }
-alias stpukvpn="stop openvpn@$UK_VPN_SERVICE_NAME"
-alias rsukvpn="restart openvpn@$UK_VPN_SERVICE_NAME"
+alias stpukvpn="stop openvpn@$UK_LONDON_VPN_SERVICE_NAME"
+alias rsukvpn="restart openvpn@$UK_LONDON_VPN_SERVICE_NAME"
+
+function stuk2vpn() {
+  get_and_connect_vpn "$UK_MANCHESTER_VPN_SERVICE_NAME"
+}
+alias stpuk2vpn="stop openvpn@$UK_MANCHESTER_VPN_SERVICE_NAME"
+alias rsuk2vpn="restart openvpn@$UK_MANCHESTER_VPN_SERVICE_NAME"
 
 function stusvpn() {
   get_and_connect_vpn "$US_VPN_SERVICE_NAME"
@@ -276,7 +282,11 @@ function get_and_connect_vpn() {
 
   # Connect to the specified VPN service
   echo "Connecting to VPN '$1'..."
-  start openvpn@$1
+
+  if ! start openvpn@$1; then
+    echo "VPN command failed. Exiting."
+    exit 1
+  fi
 
   # Wait for the VPN connection to establish
   sleep 1
