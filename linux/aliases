@@ -7,12 +7,13 @@ alias_list() {
   printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
     "take" "mkdir and go there" "myip" "print my ip" "" "" \
     "tu" "cpu usage" "tm" "memory usage" "" "" \
+    "home" "go home" "dots" "go to dotfiles" "hss" "go to home-server-scripts"
 
   echo "-------------------------------------------------------------------------------------------------------"
   echo "$fg[magenta]YT-DLP:$reset_color"
 
   printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "yt-down" "download video from url" "yt-subs" "download subs from url" "" "" \
+    "yt-down" "download video from url" "yt-subs" "download subs from url" "yt-titles" "show playlist titles at url" \
     "yt-form" "available formats" "yt-fdown" "download with format"
 
   echo "-------------------------------------------------------------------------------------------------------"

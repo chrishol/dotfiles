@@ -186,3 +186,11 @@ function yt-fdown() {
   fi
   yt-dlp -f "$2" -o "$DOWNLOADS_DIR/%(title)s.%(ext)s" "$1"
 }
+
+function yt-titles() {
+  if [ -z "$1" ]; then
+    echo "Usage: yt-titles <url>"
+    return 1
+  fi
+  yt-dlp --print "Title: %(title)s" --flat-playlist "$1"
+}
