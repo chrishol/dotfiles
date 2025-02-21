@@ -333,6 +333,14 @@ function list_active_vpn_services() {
 alias vpns="list_active_vpn_services"
 
 ############################################################
+## Tailscale
+############################################################
+
+alias tsup="sudo tailscale up"
+alias tsdown="sudo tailscale down"
+alias tss="tailscale status"
+
+############################################################
 ## Maintenance
 ############################################################
 
