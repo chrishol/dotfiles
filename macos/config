@@ -3,3 +3,7 @@ PATH=$PATH:/usr/local/share/npm/bin # Add Bower
 
 # Add pipx
 PATH=$PATH:$HOME/.local/bin
+
+# Add CalibreDB
+export PATH="/Applications/calibre.app/Contents/MacOS:$PATH"
+
