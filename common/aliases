@@ -48,6 +48,8 @@ function gp() {
 
 alias gpp='gup && gp'
 
+alias gcb='git symbolic-ref -q HEAD | sed -e "s|^refs/heads/||"'
+
 function ga() {
   git add $1
 }
