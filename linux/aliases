@@ -182,8 +182,7 @@ function start_service() {
     echo "Usage: start_service <service_name>"
     return 1
   fi
-  sudo systemctl start "$1"
-  echo "Service '$1' started."
+  sudo systemctl start "$1" && echo "Service '$1' started."
 }
 
 # Function to stop a service
@@ -192,8 +191,7 @@ function stop_service() {
     echo "Usage: stop_service <service_name>"
     return 1
   fi
-  sudo systemctl stop "$1"
-  echo "Service '$1' stopped."
+  sudo systemctl stop "$1" && echo "Service '$1' stopped."
 }
 
 # Function to restart a service
@@ -202,8 +200,7 @@ function restart_service() {
     echo "Usage: restart_service <service_name>"
     return 1
   fi
-  sudo systemctl restart "$1"
-  echo "Service '$1' restarted."
+  sudo systemctl restart "$1" && echo "Service '$1' restarted."
 }
 
 # Function to check the status of a service
@@ -290,9 +287,9 @@ function get_and_connect_vpn() {
   # Connect to the specified VPN service
   echo "Connecting to VPN '$1'..."
 
-  if ! start openvpn@$1; then
-    echo "VPN command failed. Exiting."
-    exit 1
+  if ! start_service "openvpn@$1"; then
+    echo "VPN command failed."
+    return 1
   fi
 
   # Wait for the VPN connection to establish
