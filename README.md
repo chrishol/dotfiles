@@ -14,4 +14,4 @@ https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
 
 With Source Code Pro as the font.
 
-Extra, personal, sensitive, git-ignored stuff goes in bash/extra.
+Extra, personal, sensitive, git-ignored stuff goes in `linux/extra` or `macos/extra`.

@@ -305,7 +305,11 @@ alias check-updates='apt list --upgradable' # Check for package updates
 alias apt-status='dpkg --get-selections' # Show the status of packages (whether they are installed, upgraded, etc.)
 alias mem='free -h' # Show system memory usage
 alias reboot='sudo reboot' # Reboot the system
-alias shutdown='sudo shutdown now' # Shutdown the system
+# Shutdown now by default, or pass args through e.g. shutdown -r +5
+unalias shutdown 2>/dev/null
+function shutdown() {
+  sudo shutdown "${@:-now}"
+}
 
 
 ############################################################

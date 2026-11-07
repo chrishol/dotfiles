@@ -6,7 +6,7 @@ export DOTFILES="${0:A:h}"
 
 # OS-specific configurations
 if [[ "$OSTYPE" == "linux"* ]]; then
-  for file in $DOTFILES/linux/{env,aliases}; do
+  for file in $DOTFILES/linux/{env,aliases,extra}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
