@@ -20,8 +20,7 @@ alias_list() {
   echo "$fg[magenta]MAKE MKV:$reset_color"
 
   printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "mmi" "disc:0 info" "mmra" "disc:0 rip all" "mkvtr" "mkv_edit_track_name" \
-    "mmr00" "disc:0 rip 0 (to 99)" "mmr00" "disc:0 rip 0 (to 99)" "" "" \
+    "mmi" "disc info [disc]" "mmr" "rip [disc] [title|all]" "mkvtr" "mkv_edit_track_name" \
     "ripdur" "list rip durations" "convsubs" "convert ttml subtitles" "vlcstrm" "network stream on 8081"
 
   echo "-------------------------------------------------------------------------------------------------------"
@@ -76,21 +75,15 @@ alias_list() {
 ## MakeMKV
 ############################################################
 
-alias mmi0="makemkvcon info -r disc:0"
-alias mmi1="makemkvcon info -r disc:1"
-alias mmi="mmi0"
+# Disc info: mmi [disc]  e.g. mmi, mmi 1
+function mmi() {
+  makemkvcon info -r "disc:${1:-0}"
+}
 
-alias mmr0a="makemkvcon mkv disc:0 all $RIPS_DIR"
-alias mmr1a="makemkvcon mkv disc:1 all $RIPS_DIR"
-alias mmra="mmr0a"
-
-for i in {0..99}; do
-  alias mmr0$i="makemkvcon mkv disc:0 $i \$RIPS_DIR"
-done
-
-for i in {0..99}; do
-  alias mmr1$i="makemkvcon mkv disc:1 $i \$RIPS_DIR"
-done
+# Rip a disc: mmr [disc] [title|all]  e.g. mmr (disc 0, all), mmr 0 3, mmr 1 all
+function mmr() {
+  makemkvcon mkv "disc:${1:-0}" "${2:-all}" "$RIPS_DIR"
+}
 
 alias ripdur="$HOME/src/home-server-scripts/disc_ripping/list_mkv_durations.sh $RIPS_DIR"
 alias convsubs="$HOME/src/home-server-scripts/plex/convert_ttml_to_srt.sh $DOWNLOADS_DIR"
