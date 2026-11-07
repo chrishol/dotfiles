@@ -96,7 +96,7 @@ alias ripdur="$HOME/src/home-server-scripts/disc_ripping/list_mkv_durations.sh $
 alias convsubs="$HOME/src/home-server-scripts/plex/convert_ttml_to_srt.sh $DOWNLOADS_DIR"
 
 function vlcstrm() {
-  cvlc $@ --sout '#http{mux=ts,dst=:8081}' --sout-keep
+  cvlc "$@" --sout '#http{mux=ts,dst=:8081}' --sout-keep
 }
 
 ############################################################
