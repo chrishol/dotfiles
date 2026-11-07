@@ -1,15 +1,11 @@
+### Add local bin directories to PATH
+PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
+
+### Homebrew on Apple Silicon (adds /opt/homebrew/bin ahead of the above)
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 ### Add RVM to PATH for scripting
 PATH="$PATH:/usr/local/rvm/bin"
-
-### Added by the Heroku Toolbelt
-PATH="/usr/local/heroku/bin:$PATH"
-
-### Add local bin directories to PATH for scripting
-PATH="$PATH:~/bin"
-PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-
-### Add ADB for Android
-PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools"
 
 export DOWNLOADS_DIR="$HOME/Downloads"
 export LOGS_DIR="$HOME/logs"
