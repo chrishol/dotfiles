@@ -7,10 +7,10 @@ alias 'dflh'='df -lh'
 ############################################################
 ## Basics
 ############################################################
-alias reload="source $HOME/src/dotfiles/zshrc"
+alias reload='source "$DOTFILES/zshrc"'
 
 alias 'home'='cd $HOME'
-alias 'dots'='cd $HOME/src/dotfiles'
+alias 'dots'='cd "$DOTFILES"'
 alias 'hss'='cd $HOME/src/home-server-scripts'
 
 ############################################################

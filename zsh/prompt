@@ -31,6 +31,6 @@ PROMPT=$'
 %{\e[0;37m%}%n %{\e[0;36m%}$(os_and_host) $(get_local_ip) %{\e[0;33m%}%~
 ${smiley}  %{$reset_color%}'
 
-RPROMPT='%{$fg[white]%} $(~/src/dotfiles/functions/git-cwd-info)%{$reset_color%}'
+RPROMPT='%{$fg[white]%} $("$DOTFILES/functions/git-cwd-info")%{$reset_color%}'
 
 #$(~/.rvm/bin/rvm-prompt)
