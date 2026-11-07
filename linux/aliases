@@ -374,16 +374,16 @@ function mkv_edit_track_name() {
 alias mkvtr='mkv_edit_track_name'
 
 function rnm() {
-  if [[ $# -ne 3 ]]; then
+  if [[ $# -lt 3 ]]; then
     echo "Usage: rnm <from> <to> <file(s)>"
     return 1
   fi
 
   local rnmfrom=$1
   local rnmto=$2
-  local files=$3
+  shift 2
 
-  rename "s/$rnmfrom/$rnmto/" $files
+  rename "s/$rnmfrom/$rnmto/" "$@"
 }
 
 alias iprnm="ruby $HOME/src/home-server-scripts/iplayer/replace_fullwidth_characters_in_filenames.rb && ruby $HOME/src/home-server-scripts/plex/rename_iplayer_files_for_plex.rb && ruby $HOME/src/home-server-scripts/plex/plex_rename.rb"
