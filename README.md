@@ -1,9 +1,7 @@
 My Dot Files
 ============
 
-My bash settings, shortcuts, aliases and functions.
-
-Should work with both Bash and ZSH.
+My zsh settings, shortcuts, aliases and functions. Zsh only.
 
 To install
 
