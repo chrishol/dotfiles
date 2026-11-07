@@ -1,13 +1,26 @@
-plugins=(brew gem)
-
 # Show completion on first TAB
 setopt menucomplete
 
 # Load completions for Ruby, Git, etc.
-autoload compinit
+autoload -Uz compinit
 compinit
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# History (zsh doesn't save any by default)
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt share_history hist_ignore_dups
 
 # Colors
 autoload -U colors
 colors
 setopt prompt_subst
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias ls="ls -G"
+else
+  alias ls="ls --color=auto"
+fi

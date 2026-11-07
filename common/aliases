@@ -1,4 +1,33 @@
-# Create the `?` alias to call alias_list
+############################################################
+## Help: `?` lists frequently used aliases
+############################################################
+
+# help_section "TITLE" alias description [alias description ...]
+function help_section() {
+  echo "-------------------------------------------------------------------------------------------------------"
+  echo "$fg[magenta]$1:$reset_color"
+  shift
+  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" "$@"
+}
+
+# Shared sections, then OS-specific ones from alias_list_os
+function alias_list() {
+  help_section "GENERAL ALIASES" \
+    "take" "mkdir and go there" "myip" "print my ip" "reload" "reload dotfiles" \
+    "home" "go home" "dots" "go to dotfiles" "hss" "go to home-server-scripts"
+
+  help_section "YT-DLP" \
+    "yt-down" "download video from url" "yt-subs" "download subs from url" "yt-titles" "show playlist titles at url" \
+    "yt-form" "available formats" "yt-fdown" "download with format"
+
+  help_section "MULLVAD VPN" \
+    "mva" "mullvad account get" "mvc" "mullvad connect" "mvd" "mullvad disconnect" \
+    "mvs" "mullvad status" "mvrs" "mullvad set location"
+
+  (( $+functions[alias_list_os] )) && alias_list_os
+  echo "-------------------------------------------------------------------------------------------------------"
+}
+
 alias '?'='alias_list'
 
 alias 'lslh'='ls -lh'
@@ -7,10 +36,10 @@ alias 'dflh'='df -lh'
 ############################################################
 ## Basics
 ############################################################
-alias reload="source $HOME/src/dotfiles/zshrc"
+alias reload='source "$DOTFILES/zshrc"'
 
 alias 'home'='cd $HOME'
-alias 'dots'='cd $HOME/src/dotfiles'
+alias 'dots'='cd "$DOTFILES"'
 alias 'hss'='cd $HOME/src/home-server-scripts'
 
 ############################################################
@@ -18,25 +47,37 @@ alias 'hss'='cd $HOME/src/home-server-scripts'
 ############################################################
 alias g="git"
 alias s="git status"
+alias ga="git add"
 alias gaa="git add --all"
 alias gap='git add -p'
 alias gb="git branch"
 alias gd="git diff"
+alias gm="git merge"
 alias gt="git tag"
 alias gundo="git reset --soft HEAD~1"
 
 alias gup="git pull --rebase --prune"
 
-function gp() {
-  local default_branch
-  default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed "s@^refs/remotes/origin/@@")
-  if [[ -z "$default_branch" ]]; then
-    echo "Error: Unable to determine the default branch."
-    return 1
+# Default branch from origin/HEAD, falling back to main or master
+function git_default_branch() {
+  local branch
+  branch=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+  if [[ -n "$branch" ]]; then
+    echo "${branch#origin/}"
+  elif git show-ref --verify --quiet refs/heads/main; then
+    echo main
+  else
+    echo master
   fi
+}
 
-  local branches
-  branches=$(git branch --merged "$default_branch" | grep -v "\* $default_branch")
+# Delete local branches merged into the default branch, then prune remotes
+function gp() {
+  local default_branch branches
+  default_branch=$(git_default_branch)
+  branches=$(git branch --merged "$default_branch" --format='%(refname:short)' \
+    | grep -vx -e "$default_branch" -e "$(git branch --show-current)")
+
   if [[ -z "$branches" ]]; then
     echo "No branches to delete."
   else
@@ -48,31 +89,17 @@ function gp() {
 
 alias gpp='gup && gp'
 
-alias gcb='git symbolic-ref -q HEAD | sed -e "s|^refs/heads/||"'
-
-function ga() {
-  git add $1
-}
+alias gcb="git branch --show-current"
 
 function ggg() {
   git commit -v -m "$*"
 }
 
-function gm() {
-  git merge $1
-}
-
 function gpo() {
   if [ -z "$1" ]; then
-    local default_branch
-    default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed "s@^refs/remotes/origin/@@")
-    if [[ -z "$default_branch" ]]; then
-      git push origin master
-    else
-      git push origin $default_branch
-    fi
+    git push origin "$(git_default_branch)"
   else
-    git push origin $*
+    git push origin "$@"
   fi
 }
 
@@ -82,9 +109,9 @@ alias glsh="git shortlog -sn"
 
 function gco {
   if [ -z "$1" ]; then
-    git checkout master
+    git checkout "$(git_default_branch)"
   else
-    git checkout $*
+    git checkout "$@"
   fi
 }
 
@@ -95,9 +122,9 @@ function gdays() {
 
 function gph() {
   if [ -z "$1" ]; then
-    git push heroku master
+    git push heroku "$(git_default_branch)"
   else
-    git push heroku $*
+    git push heroku "$@"
   fi
 }
 

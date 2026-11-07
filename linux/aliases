@@ -1,102 +1,56 @@
-# Function to display frequently used aliases in a formatted, colored table
-alias_list() {
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]GENERAL ALIASES:$reset_color"
-
-  # Three-column format: "Alias  Description  |  Alias  Description  |  Alias  Description"
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "take" "mkdir and go there" "myip" "print my ip" "" "" \
-    "tu" "cpu usage" "tm" "memory usage" "" "" \
-    "home" "go home" "dots" "go to dotfiles" "hss" "go to home-server-scripts"
-
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]YT-DLP:$reset_color"
-
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "yt-down" "download video from url" "yt-subs" "download subs from url" "yt-titles" "show playlist titles at url" \
-    "yt-form" "available formats" "yt-fdown" "download with format"
-
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]MAKE MKV:$reset_color"
-
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "mmi" "disc:0 info" "mmra" "disc:0 rip all" "mkvtr" "mkv_edit_track_name" \
-    "mmr00" "disc:0 rip 0 (to 99)" "mmr00" "disc:0 rip 0 (to 99)" "" "" \
+# Linux sections for the `?` help (see common/aliases)
+function alias_list_os() {
+  help_section "MAKE MKV" \
+    "mmi" "disc info [disc]" "mmr" "rip [disc] [title|all]" "mkvtr" "mkv_edit_track_name" \
     "ripdur" "list rip durations" "convsubs" "convert ttml subtitles" "vlcstrm" "network stream on 8081"
 
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]PLEX:$reset_color"
-
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+  help_section "PLEX" \
     "addmv" "add plex movie dir" "addtv" "add plex tv dir" "gettv" "Lookup on TVDB" \
-    "iprnm" "iPlayer rename" "plexmv" "move renamed files" "" "" \
-    "iplylast" "iPlayer fetch last ep" "iplyall" "iPlayer fetch all eps" "" ""
+    "iprnm" "iPlayer rename" "plexmv" "move renamed files" "rnm" "rename <from> <to> files" \
+    "iplylast" "iPlayer fetch last ep" "iplyall" "iPlayer fetch all eps"
 
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]TMUX:$reset_color"
-
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+  help_section "TMUX" \
     "tmn" "start_tmux_session" "tml" "list_tmux_sessions" "tma" "attach_tmux_session" \
     "tmd" "detach_tmux_session" "tmk" "kill_tmux_session" "tmr" "rename_tmux_window"
 
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]TORGUARD VPNS:$reset_color"
+  help_section "TORGUARD VPNS" \
+    "stfixvpn" "start uk fixed ip" "stpfixvpn" "stop uk fixed ip" "rsfixvpn" "restart uk fixed ip" \
+    "stukvpn" "start uk london" "stpukvpn" "stop uk london" "rsukvpn" "restart uk london" \
+    "stuk2vpn" "start uk manchester" "stpuk2vpn" "stop uk manchester" "rsuk2vpn" "restart uk manchester" \
+    "stusvpn" "start us la" "stpusvpn" "stop us la" "rsusvpn" "restart us la" \
+    "stus2vpn" "start us sf" "stpus2vpn" "stop us sf" "rsus2vpn" "restart us sf" \
+    "vpns" "list active vpns"
 
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "stfixvpn" "start uk fixed ip" "stukvpn" "start uk vpn" "stukvpn" "start us vpn" \
-    "stpfixvpn" "stop uk fixed ip" "stpukvpn" "stop uk vpn" "stpukvpn" "stop us vpn" \
-    "rsfixvpn" "restart uk fixed ip" "rsukvpn" "restart uk vpn" "rsusvpn" "restart us vpn" \
-    "vpns" "list_active_vpn_services" "" "" "" ""
+  help_section "TAILSCALE" \
+    "tsup" "tailscale up" "tsdown" "tailscale down" "tss" "tailscale status"
 
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]SERVICES:$reset_color"
-
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
+  help_section "SERVICES" \
     "start" "start_service" "stop" "stop_service" "restart" "restart_service" \
-    "status" "status_service" "logs" "logs_service" "taillogs" "tail_logs_service"
+    "status" "status_service" "logs" "logs_service" "tail_logs" "tail_logs_service"
 
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]MULLVAD VPN:$reset_color"
-
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "mva" "mullvad account get" "mvc" "mullvad connect" "mvd" "mullvad disconnect" \
-    "mvs" "mullvad status" "mvrs" "mullvad set location"
-
-  echo "-------------------------------------------------------------------------------------------------------"
-  echo "$fg[magenta]BAY CLUB NOTIFIER:$reset_color"
-
-  printf "$fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s | $fg[green]%-9s$reset_color %-24s\n" \
-    "bayconfig" "bay club config" "" "" "" ""
-
-  echo "-------------------------------------------------------------------------------------------------------"
-
+  help_section "BAY CLUB NOTIFIER" \
+    "bayconfig" "bay club config"
 }
 
 ############################################################
 ## MakeMKV
 ############################################################
 
-alias mmi0="makemkvcon info -r disc:0"
-alias mmi1="makemkvcon info -r disc:1"
-alias mmi="mmi0"
+# Disc info: mmi [disc]  e.g. mmi, mmi 1
+function mmi() {
+  makemkvcon info -r "disc:${1:-0}"
+}
 
-alias mmr0a="makemkvcon mkv disc:0 all $RIPS_DIR"
-alias mmr1a="makemkvcon mkv disc:1 all $RIPS_DIR"
-alias mmra="mmr0a"
-
-for i in {0..99}; do
-  alias mmr0$i="makemkvcon mkv disc:0 $i \$RIPS_DIR"
-done
-
-for i in {0..99}; do
-  alias mmr1$i="makemkvcon mkv disc:1 $i \$RIPS_DIR"
-done
+# Rip a disc: mmr [disc] [title|all]  e.g. mmr (disc 0, all), mmr 0 3, mmr 1 all
+function mmr() {
+  makemkvcon mkv "disc:${1:-0}" "${2:-all}" "$RIPS_DIR"
+}
 
 alias ripdur="$HOME/src/home-server-scripts/disc_ripping/list_mkv_durations.sh $RIPS_DIR"
 alias convsubs="$HOME/src/home-server-scripts/plex/convert_ttml_to_srt.sh $DOWNLOADS_DIR"
 
 function vlcstrm() {
-  cvlc $@ --sout '#http{mux=ts,dst=:8081}' --sout-keep
+  cvlc "$@" --sout '#http{mux=ts,dst=:8081}' --sout-keep
 }
 
 ############################################################
@@ -182,8 +136,7 @@ function start_service() {
     echo "Usage: start_service <service_name>"
     return 1
   fi
-  sudo systemctl start "$1"
-  echo "Service '$1' started."
+  sudo systemctl start "$1" && echo "Service '$1' started."
 }
 
 # Function to stop a service
@@ -192,8 +145,7 @@ function stop_service() {
     echo "Usage: stop_service <service_name>"
     return 1
   fi
-  sudo systemctl stop "$1"
-  echo "Service '$1' stopped."
+  sudo systemctl stop "$1" && echo "Service '$1' stopped."
 }
 
 # Function to restart a service
@@ -202,8 +154,7 @@ function restart_service() {
     echo "Usage: restart_service <service_name>"
     return 1
   fi
-  sudo systemctl restart "$1"
-  echo "Service '$1' restarted."
+  sudo systemctl restart "$1" && echo "Service '$1' restarted."
 }
 
 # Function to check the status of a service
@@ -290,9 +241,9 @@ function get_and_connect_vpn() {
   # Connect to the specified VPN service
   echo "Connecting to VPN '$1'..."
 
-  if ! start openvpn@$1; then
-    echo "VPN command failed. Exiting."
-    exit 1
+  if ! start_service "openvpn@$1"; then
+    echo "VPN command failed."
+    return 1
   fi
 
   # Wait for the VPN connection to establish
@@ -354,7 +305,11 @@ alias check-updates='apt list --upgradable' # Check for package updates
 alias apt-status='dpkg --get-selections' # Show the status of packages (whether they are installed, upgraded, etc.)
 alias mem='free -h' # Show system memory usage
 alias reboot='sudo reboot' # Reboot the system
-alias shutdown='sudo shutdown now' # Shutdown the system
+# Shutdown now by default, or pass args through e.g. shutdown -r +5
+unalias shutdown 2>/dev/null
+function shutdown() {
+  sudo shutdown "${@:-now}"
+}
 
 
 ############################################################
@@ -377,16 +332,16 @@ function mkv_edit_track_name() {
 alias mkvtr='mkv_edit_track_name'
 
 function rnm() {
-  if [[ $# -ne 3 ]]; then
+  if [[ $# -lt 3 ]]; then
     echo "Usage: rnm <from> <to> <file(s)>"
     return 1
   fi
 
   local rnmfrom=$1
   local rnmto=$2
-  local files=$3
+  shift 2
 
-  rename "s/$rnmfrom/$rnmto/" $files
+  rename "s/$rnmfrom/$rnmto/" "$@"
 }
 
 alias iprnm="ruby $HOME/src/home-server-scripts/iplayer/replace_fullwidth_characters_in_filenames.rb && ruby $HOME/src/home-server-scripts/plex/rename_iplayer_files_for_plex.rb && ruby $HOME/src/home-server-scripts/plex/plex_rename.rb"
